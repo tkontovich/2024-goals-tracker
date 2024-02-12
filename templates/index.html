@@ -1,0 +1,153 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block nav %}
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/climbing">Climbing</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/running">Running</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/reading">Reading</a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block main %}
+
+<!-- overall container -->
+<div class="container-md">
+
+    <!-- overall progress bar -->
+    <div class="my-6">
+        <div class="row my-4">
+            <h1>Overall Progress</h1>
+        </div>
+        <div>
+            <div class="progress col" style="height: 40px;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated {{ totalProgressColor }}"
+                    role="progressbar" aria-label="Overall progress" style="width: {{ totalProgress }}%"
+                    aria-valuenow="{{ totalProgress }}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <br>
+        </div>
+    </div>
+
+    <hr />
+
+    <!-- climbing section -->
+    <div class="my-6">
+        <div class="row my-4">
+            <h2>Climbing Progress</h2>
+        </div>
+        <div class="my-4">
+            <div class="progress col">
+                <div class="progress-bar progress-bar-striped progress-bar-animated {{ climbProgressColor }}"
+                    role="progressbar" aria-label="Climbing progress" style="width: {{ toclimbgoal }}%"
+                    aria-valuenow="{{ toclimbgoal }}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+        <div class="row my-4 d-flex flex-wrap align-items-center text-center">
+            <!-- This is the left aligned version -->
+            <!-- <div class="col-sm-6 col-md-3">
+            <img src={{ ayy }} height="30" width="30">
+            <br>
+            <br>
+            <h4>5.13a ascent</h4>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <img src={{ bee }} height="30" width="30">
+            <br>
+            <br>
+            <h4>5.13b ascent</h4>
+        </div> -->
+
+            <div class="col-2 text-center">
+                <img src={{ ayy }} height="30" width="30">
+            </div>
+            <div class="col-4">
+                <h4 class="text-start">5.13a ascent</h4>
+            </div>
+            <div class="col-2 text-center">
+                <img src={{ bee }} height="30" width="30">
+            </div>
+            <div class="col-4">
+                <h4 class="text-start">5.13b ascent</h4>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <!-- running section -->
+    <div class="my-6">
+        <div class="row my-4">
+            <h2>Running Progress</h2>
+        </div>
+        <div class="my-4">
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated {{ runProgressColor }}"
+                    role="progressbar" aria-label="Running progress" style="width: {{ torungoal }}%"
+                    aria-valuenow="{{ torungoal }}" aria-valuemin="0" aria-valuemax="100">
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row my-4 text-center">
+            <div class="col-sm-6 col-md-3">
+                <h4>Total miles</h4>
+                <p>{{ "{:,.2f}".format(miles) }} mi.</p>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <h4>Average pace</h4>
+                <p>{{ pace }}/mi.</p>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <h4>Average distance</h4>
+                <p>{{ "{:,.2f}".format(avgmiles) }} mi.</p>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <h4>Total calories</h4>
+                <p>{{ "{:,}".format(cals) }}</p>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <!-- Reading section -->
+    <div class="my-6">
+        <div class="row my-4">
+            <h2>Reading Progress</h3>
+        </div>
+        <div class="my-4">
+            <div class="progress col">
+                <div class="progress-bar progress-bar-striped progress-bar-animated {{ readProgressColor }}"
+                    role="progressbar" aria-label="Reading progress" style="width: {{ toreadgoal }}%" aria-valuenow="{{
+                toreadgoal }}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+        <br>
+        <div class="row my-4 text-center">
+            <div class="col-sm-6 col-md-6">
+                <h4>Pages read</h4>
+                <p>{{ "{:,}".format(pages) }}</p>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <h4>Average time/book</h4>
+                <p>{{ "{:,.2f}".format(days) }} days</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
